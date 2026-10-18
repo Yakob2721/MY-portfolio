@@ -1,0 +1,36 @@
+/* =============================================
+   DESIGN TOKENS — colors, fonts, spacing, glow
+   Used by every other CSS file
+   ============================================= */
+:root {
+  /* Backgrounds */
+  --bg-primary:   #0a0a0c;
+  --bg-secondary: #121216;
+  --bg-card:      #1e1e24;
+  --bg-glass:     rgba(30, 30, 36, 0.6);
+
+  /* Brand colors */
+  --neon-cyan:     #00f0ff;
+  --neon-blue:     #0072ff;
+  --neon-gradient: linear-gradient(135deg, #00f0ff, #0072ff);
+
+  /* Text */
+  --text-primary:   #f0f0f5;
+  --text-secondary: #a0a0b0;
+  --text-muted:     #5a5a70;
+
+  /* Borders & glows */
+  --border-glass: rgba(0, 240, 255, 0.12);
+  --glow-sm:  0 0 10px rgba(0, 240, 255, 0.30);
+  --glow-md:  0 0 20px rgba(0, 240, 255, 0.40), 0 0 40px rgba(0, 114, 255, 0.20);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  /* Misc */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font:       'Inter', sans-serif;
+  --nav-height: 70px;
+}

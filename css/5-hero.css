@@ -1,0 +1,168 @@
+/* =============================================
+   HERO SECTION — full-screen intro with avatar
+   ============================================= */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-height);
+  position: relative;      /* anchor for .scroll-indicator absolute position */
+  overflow: hidden;        /* clip the decorative orbs at edges */
+}
+
+/* Background orbs */
+#hero .orb-1 {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(0,114,255,.18), transparent 70%);
+  top: -100px; right: -80px;
+}
+#hero .orb-2 {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(0,240,255,.12), transparent 70%);
+  bottom: -60px; left: -60px;
+}
+
+/* Two-column grid */
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 56px; align-items: center;
+  position: relative; z-index: 1;
+}
+
+/* Status badge */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,240,255,.06);
+  border: 1px solid rgba(0,240,255,.2);
+  border-radius: 50px; padding: 5px 14px;
+  font-size: 12px; color: var(--neon-cyan); font-weight: 500;
+  margin-bottom: 20px;
+}
+.hero-badge .dot {
+  width: 7px; height: 7px; background: var(--neon-cyan);
+  border-radius: 50%; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(0,240,255,.4); }
+  50%      { opacity:.7; box-shadow: 0 0 0 5px rgba(0,240,255,0); }
+}
+
+/* Heading */
+.hero-title {
+  font-size: clamp(34px, 5.5vw, 62px);
+  font-weight: 900; line-height: 1.1;
+  letter-spacing: -1.5px; margin-bottom: 16px;
+}
+.hero-title .gradient-text {
+  background: var(--neon-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Typewriter cursor */
+.typewriter {
+  display: inline-block;
+  border-right: 3px solid var(--neon-cyan);
+  padding-right: 3px;
+  animation: blink .75s step-end infinite;
+  white-space: nowrap; overflow: hidden;
+}
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* Subtitle & actions */
+.hero-subtitle {
+  font-size: 16px; color: var(--text-secondary);
+  max-width: 440px; line-height: 1.7; margin-bottom: 32px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* --- Avatar with glowing ring --- */
+.hero-avatar-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Ring container — must be position:relative so ::before/::after anchor correctly */
+.avatar-glow-ring {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  flex-shrink: 0;
+}
+
+/* Spinning solid gradient ring (innermost) */
+.avatar-glow-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--neon-gradient);
+  animation: rotate-ring 4s linear infinite;
+  z-index: 0;
+}
+
+/* Outer blurred glow sweep */
+.avatar-glow-ring::after {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 55%,
+    rgba(0, 240, 255, 0.45) 75%,
+    transparent 100%
+  );
+  animation: rotate-ring 3s linear infinite reverse;
+  filter: blur(10px);
+  z-index: 0;
+}
+
+@keyframes rotate-ring { to { transform: rotate(360deg); } }
+
+/* Photo circle — sits above both pseudo-element rings */
+.avatar-inner {
+  position: absolute;           /* fill the ring container exactly */
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--bg-primary);  /* dark gap between photo and ring */
+}
+
+/* The actual <img> tag — fills the circle, crops to center */
+.avatar-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;   /* shift up slightly so face shows well */
+  display: block;
+  border-radius: 50%;
+}
+
+/* Scroll hint */
+.scroll-indicator {
+  position: absolute; bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: var(--text-muted); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+.scroll-indicator i { font-size: 14px; color: var(--neon-cyan); }
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(7px); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-inner        { grid-template-columns: 1fr; text-align: center; gap: 36px; }
+  .hero-subtitle     { margin-inline: auto; }
+  .hero-actions      { justify-content: center; }
+  .hero-avatar-wrap  { order: -1; }
+  .avatar-glow-ring  { width: 220px; height: 220px; }
+}

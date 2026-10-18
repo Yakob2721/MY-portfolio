@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- REPLACE: page title -->
+  <title>Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!--
+    CSS files — each file covers one concern:
+    1-tokens.css         → design variables (colors, fonts, spacing)
+    2-base.css           → reset, body, scrollbar, grid overlay
+    3-utilities.css      → buttons, glass card, tags, animations
+    4-navbar.css         → fixed nav, dropdowns, hamburger, mobile menu
+    5-hero.css           → hero section + avatar ring
+    6-about.css          → about section + photo frame
+    7-experience.css     → experience timeline
+    8-skills.css         → skill tabs + progress bars
+    9-projects.css       → project filter + cards + media
+    10-contact.css       → contact info + form
+    11-footer-lightbox.css → footer + lightbox modal
+  -->
+  <link rel="stylesheet" href="css/1-tokens.css" />
+  <link rel="stylesheet" href="css/2-base.css" />
+  <link rel="stylesheet" href="css/3-utilities.css" />
+  <link rel="stylesheet" href="css/4-navbar.css" />
+  <link rel="stylesheet" href="css/5-hero.css" />
+  <link rel="stylesheet" href="css/6-about.css" />
+  <link rel="stylesheet" href="css/7-experience.css" />
+  <link rel="stylesheet" href="css/8-skills.css" />
+  <link rel="stylesheet" href="css/9-projects.css" />
+  <link rel="stylesheet" href="css/10-contact.css" />
+  <link rel="stylesheet" href="css/11-footer-lightbox.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+       ══════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+
+      <!-- REPLACE: your brand name — keep the two separate text nodes for the gradient split -->
+      <a href="#hero" class="nav-logo">Portfolio<span>.</span></a>
+
+      <ul class="nav-links">
+
+        <li><a href="#hero">Home</a></li>
+
+        <!-- Dropdown: About -->
+        <li>
+          <a href="#about">About <i class="fa-solid fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="#about"><i class="fa-solid fa-user"></i> Who I Am</a>
+            <a href="#skills"><i class="fa-solid fa-code"></i> My Skills</a>
+          </div>
+        </li>
+
+        <!-- Dropdown: Experience -->
+        <li>
+          <a href="#experience">Experience <i class="fa-solid fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="#experience"><i class="fa-solid fa-briefcase"></i> Work History</a>
+            <a href="#experience"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+          </div>
+        </li>
+
+        <!-- Dropdown: Work / Projects -->
+        <li>
+          <a href="#projects">Projects <i class="fa-solid fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="#projects" data-filter="web"><i class="fa-solid fa-globe"></i> Web Projects</a>
+            <a href="#projects" data-filter="video"><i class="fa-solid fa-film"></i> Video Work</a>
+            <a href="#projects" data-filter="networking"><i class="fa-solid fa-network-wired"></i> Networking</a>
+          </div>
+        </li>
+
+        <li><a href="#contact">Contact</a></li>
+
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero"       class="mobile-link">Home</a>
+    <a href="#about"      class="mobile-link">About</a>
+    <a href="#experience" class="mobile-link">Experience</a>
+    <a href="#skills"     class="mobile-link">Skills</a>
+    <a href="#projects"   class="mobile-link">Projects</a>
+    <a href="#contact"    class="mobile-link">Contact</a>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Text -->
+        <div>
+          <div class="hero-badge fade-in-up">
+            <span class="dot"></span>
+            <!-- REPLACE: your current status -->
+            Open to opportunities
+          </div>
+
+          <h1 class="hero-title fade-in-up delay-1">
+            <!-- REPLACE: your name -->
+            Hi, I'm <span class="gradient-text">Yekoye</span><br/>
+            <!-- Roles → js/typewriter.js → roles[] array -->
+            <span class="typewriter" id="typewriter"></span>
+          </h1>
+
+          <!-- REPLACE: one-line intro -->
+          <p class="hero-subtitle fade-in-up delay-2">
+            Developer · Network Engineer · Video Editor.<br/>
+            Building fast, clean, and creative digital products.
+          </p>
+
+          <div class="hero-actions fade-in-up delay-3">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-rocket"></i> View Work
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fa-solid fa-paper-plane"></i> Contact
+            </a>
+          </div>
+        </div>
+
+        <!-- Avatar with glowing spinning ring -->
+        <div class="hero-avatar-wrap fade-in-up delay-4">
+          <div class="avatar-glow-ring">
+            <div class="avatar-inner">
+              <!-- Your profile photo — path: image/BDU1508216UR.png -->
+              <img src="image/BDU1508216UR.png" alt="Yekoye Endeshew — Profile Photo" />
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /hero-inner -->
+    </div><!-- /container -->
+
+    <!-- Scroll hint arrow -->
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       ABOUT
+       ══════════════════════════════════════════ -->
+  <section id="about" class="section">
+    <div class="orb orb-1"></div>
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- ── About Photo Slider ───────────────────────────
+             REPLACE: swap image paths below with your own.
+             All images live in the /image/ folder.
+             ─────────────────────────────────────────────── -->
+        <div class="about-image-wrap fade-in-up">
+
+          <!-- Outer frame keeps the corner accent lines -->
+          <div class="about-image-frame">
+
+            <!-- Slider viewport — only one slide visible at a time -->
+            <div class="slider" id="aboutSlider">
+
+              <!-- Slide track — all slides sit side-by-side here -->
+              <div class="slider-track" id="sliderTrack">
+
+                <!-- REPLACE: update src paths to your own images -->
+                <div class="slide"><img src="image/1.jpg" alt="Photo 1" /></div>
+                <div class="slide"><img src="image/2.jpg" alt="Photo 2" /></div>
+                <div class="slide"><img src="image/3.jpg" alt="Photo 3" /></div>
+                <div class="slide"><img src="image/4.png" alt="Photo 4" /></div>
+                <div class="slide"><img src="image/5.png" alt="Photo 5" /></div>
+                <div class="slide"><img src="image/6.png" alt="Photo 6" /></div>
+                <div class="slide"><img src="image/7.jpg" alt="Photo 7" /></div>
+                <div class="slide"><img src="image/8.jpg" alt="Photo 8" /></div>
+
+              </div><!-- /slider-track -->
+
+              <!-- Prev / Next arrows -->
+              <button class="slider-btn slider-prev" id="sliderPrev" aria-label="Previous photo">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="slider-btn slider-next" id="sliderNext" aria-label="Next photo">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <!-- Dot indicators — generated by JS, but scaffold here -->
+              <div class="slider-dots" id="sliderDots"></div>
+
+            </div><!-- /slider -->
+
+          </div><!-- /about-image-frame -->
+
+          <!-- Corner accent lines (unchanged) -->
+          <div class="about-image-accent"></div>
+          <div class="about-image-accent-2"></div>
+
+        </div><!-- /about-image-wrap -->
+
+        <!-- Bio -->
+        <div class="about-content">
+          <div class="section-header">
+            <span class="section-label">About Me</span>
+            <h2 class="section-title">Who I <span>Am</span></h2>
+          </div>
+
+          <!-- REPLACE: your bio (keep it short) -->
+          <p class="about-text fade-in-up delay-1">
+           My name is Yekoye Endeshew I’m a Computer Engineering student at Bahir Dar University and visual creator with a strong focus on computer networking, frontend systems, and high-impact video production
+            I'm a multi-disciplinary technologist with hands-on expertise in software development, network infrastructure, and creative video production.
+          </p>
+          <p class="about-text fade-in-up delay-2">
+            I deliver end-to-end digital solutions — from clean web apps to cinematic video edits and secure network designs.
+          </p>
+
+          <a href="#contact" class="btn btn-primary fade-in-up delay-3">
+            <i class="fa-solid fa-handshake"></i> Work With Me
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       EXPERIENCE
+       ══════════════════════════════════════════ -->
+  <section id="experience" class="section">
+    <div class="orb orb-1"></div>
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <span class="section-label">Career</span>
+        <h2 class="section-title">My <span>Experience</span></h2>
+        <p class="section-desc">Work history &amp; education</p>
+      </div>
+
+      <div class="timeline">
+
+        <!-- ────────────────────────────────────
+             REPLACE: role, company, period, desc
+             ──────────────────────────────────── -->
+        <div class="timeline-item glass-card fade-in-up">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Full-Stack Developer</div>
+              <!-- REPLACE: company name -->
+              <div class="timeline-place">education/semister project</div>
+            </div>
+            <!-- REPLACE: date range -->
+            <span class="timeline-period">2024 – Present</span>
+          </div>
+          <!-- REPLACE: one-line description -->
+          <p class="timeline-desc">Built and maintained web applications — REST APIs, React frontends, and cloud deployments.</p>
+          <div class="timeline-tags">
+            <span class="tag">React</span><span class="tag">java</span><span class="tag">AWS</span>
+          </div>
+        </div>
+
+        <!-- ──────────────────────────────────── -->
+        <div class="timeline-item glass-card fade-in-up delay-1">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Network Engineer</div>
+              <!-- REPLACE -->
+              <div class="timeline-place">Intern/IE network Solutions plc.</div>
+            </div>
+            <span class="timeline-period">2026 –</span>
+          </div>
+          <p class="timeline-desc">Designed &amp; maintained multi-site LAN/WAN networks with Cisco equipment, VLANs, and VPNs.</p>
+          <div class="timeline-tags">
+            <span class="tag">Cisco</span><span class="tag">OSPF</span><span class="tag">Firewall</span>
+          </div>
+        </div>
+
+        <!-- ──────────────────────────────────── -->
+        <div class="timeline-item glass-card fade-in-up delay-2">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Video Editor</div>
+              <!-- REPLACE -->
+              <div class="timeline-place">Freelance / tiktok</div>
+            </div>
+            <span class="timeline-period">2025 – Present</span>
+          </div>
+          <p class="timeline-desc">Produced brand videos and motion graphics for clients across various industries.</p>
+          <div class="timeline-tags">
+            <span class="tag">Premiere pro</span><span class="tag">capcut</span><span class="tag">After effect</span>
+          </div>
+        </div>
+
+        <!-- ──────────────────────────────────── -->
+        <div class="timeline-item glass-card fade-in-up delay-3">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">B.Sc. Computer Engineering</div>
+              <!-- REPLACE -->
+              <div class="timeline-place">Bahir dar University</div>
+            </div>
+            <span class="timeline-period">2023 – present</span>
+          </div>
+          <p class="timeline-desc">under Graduate with honors. Focus areas: software engineering, networking, and data structures.</p>
+          <div class="timeline-tags">
+            <span class="tag">CE</span><span class="tag">Networking</span><span class="tag">Algorithms</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SKILLS
+       ══════════════════════════════════════════ -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <span class="section-label">Expertise</span>
+        <h2 class="section-title">My <span>Skills</span></h2>
+      </div>
+
+      <div class="skills-tabs">
+        <button class="skills-tab active" data-tab="dev">Development</button>
+        <button class="skills-tab" data-tab="video">Video Editing</button>
+        <button class="skills-tab" data-tab="networking">Networking</button>
+      </div>
+
+      <!-- Development -->
+      <div class="skills-panel active" id="tab-dev">
+        <div class="skills-grid">
+          <!-- REPLACE: name, icon, level, data-width (0–100) -->
+          <div class="skill-card glass-card fade-in-up">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
+              <div><div class="skill-name">HTML / CSS</div><div class="skill-level">Advanced</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-1">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
+              <div><div class="skill-name">JavaScript /java</div><div class="skill-level">Advanced</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-2">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-react"></i></div>
+              <div><div class="skill-name">React / Next.js</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-3">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-node"></i></div>
+              <div><div class="skill-name">Node.js</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-4">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
+              <div><div class="skill-name">Python</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-4">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+              <div><div class="skill-name">SQL / MongoDB</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Editing -->
+      <div class="skills-panel" id="tab-video">
+        <div class="skills-grid">
+          <div class="skill-card glass-card fade-in-up">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-film"></i></div>
+              <div><div class="skill-name">Premiere Pro</div><div class="skill-level">Advanced</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-1">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div><div class="skill-name">capcut</div><div class="skill-level">Advanced</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-2">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-palette"></i></div>
+              <div><div class="skill-name">DaVinci Resolve</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-3">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-photo-film"></i></div>
+              <div><div class="skill-name">Photoshop</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-4">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-video"></i></div>
+              <div><div class="skill-name">Motion Graphics</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="74"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-4">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-music"></i></div>
+              <div><div class="skill-name">Audio Mixing</div><div class="skill-level">Advanced</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="68"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Networking -->
+      <div class="skills-panel" id="tab-networking">
+        <div class="skills-grid">
+          <div class="skill-card glass-card fade-in-up">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
+              <div><div class="skill-name">Cisco / CCNA</div><div class="skill-level">Advanced</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="86"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-1">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-linux"></i></div>
+              <div><div class="skill-name">Linux Admin</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-2">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-docker"></i></div>
+              <div><div class="skill-name">Docker</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="74"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-3">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div><div class="skill-name">Cybersecurity</div><div class="skill-level">Intermediate</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-4">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
+              <div><div class="skill-name">Git</div><div class="skill-level">Advanced</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+          </div>
+          <div class="skill-card glass-card fade-in-up delay-4">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="fa-brands fa-aws"></i></div>
+              <div><div class="skill-name">AWS / Cloud</div><div class="skill-level">Beginner</div></div>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="62"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       PROJECTS
+       ══════════════════════════════════════════ -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Featured <span>Projects</span></h2>
+        <p class="section-desc">Web · Video · Networking</p>
+      </div>
+
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="video">Video</button>
+        <button class="filter-btn" data-filter="networking">Networking</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <!-- CARD 1 — Image / Web — REPLACE: img src, data-src, title, desc, tags, links -->
+        <div class="project-card fade-in-up" data-category="web">
+          <div class="project-media" data-type="image"
+               data-src="https://bdu-notice-board.vercel.app/">
+            <img src="https://placehold.co/600x300/1e1e24/00f0ff?text=BDU+Notice+Board&font=inter" alt="BDU Notice Board" />
+            <div class="media-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            <span class="project-type-badge badge-web">Web</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">BDU Notice Board System</h3>
+            <p class="project-desc">Full-stack notice board management system with Admin page.</p>
+            <div class="project-tags">
+              <span class="tag">React</span><span class="tag">Java</span><span class="tag">MongoDB</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://bdu-notice-board.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+              <a href="#" class="btn btn-ghost" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 — HTML5 Video / Video -->
+        <div class="project-card fade-in-up delay-1" data-category="video">
+          <div class="project-media" data-type="video"
+               data-src="video/hope.mp4">
+            <img src="https://placehold.co/600x300/1e1e24/00f0ff?text=Hope+Video&font=inter" alt="Hope Video" />
+            <div class="video-thumb"><div class="play-btn"><i class="fa-solid fa-play"></i></div></div>
+            <span class="project-type-badge badge-video">Video</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Hope — Short Film</h3>
+            <p class="project-desc">Cinematic short film with motion graphics and color grade.</p>
+            <div class="project-tags">
+              <span class="tag">Premiere</span><span class="tag">CapCut</span>
+            </div>
+            <div class="project-actions">
+              <a href="video/hope.mp4" class="btn btn-primary" target="_blank" rel="noopener"><i class="fa-solid fa-play"></i> Watch</a>
+              <a href="#" class="btn btn-ghost" target="_blank" rel="noopener"><i class="fa-solid fa-circle-info"></i> Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 — Image / Networking -->
+        <div class="project-card fade-in-up delay-2" data-category="networking">
+          <div class="project-media" data-type="image"
+               data-src="image/project.jpg">
+            <img src="image/project.jpg" alt="Network Design Project" />
+            <div class="media-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            <span class="project-type-badge badge-web" style="background:rgba(0,114,255,.15);color:#7ab8ff;border-color:rgba(0,114,255,.3)">Network</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Enterprise Network Design</h3>
+            <p class="project-desc">Multi-site VLAN network with firewall &amp; DMZ Zone.</p>
+            <div class="project-tags">
+              <span class="tag">Cisco</span><span class="tag">VLAN</span><span class="tag">Server</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn btn-primary" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> Case Study</a>
+              <a href="#" class="btn btn-ghost" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Config</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 — HTML5 Video / Video -->
+        <div class="project-card fade-in-up delay-3" data-category="video">
+          <div class="project-media" data-type="video"
+               data-src="video/MCIT.mp4">
+            <img src="https://placehold.co/600x300/121216/00f0ff?text=MCIT+Video&font=inter" alt="MCIT Video" />
+            <div class="video-thumb"><div class="play-btn"><i class="fa-solid fa-play"></i></div></div>
+            <span class="project-type-badge badge-video">Video</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">MCIT Promo Video</h3>
+            <p class="project-desc">Professional promo video with motion graphics &amp; color grade.</p>
+            <div class="project-tags">
+              <span class="tag">Premiere Pro</span><span class="tag">After Effects</span>
+            </div>
+            <div class="project-actions">
+              <a href="video/MCIT.mp4" class="btn btn-primary" target="_blank" rel="noopener"><i class="fa-solid fa-play"></i> Watch</a>
+              <a href="#" class="btn btn-ghost" target="_blank" rel="noopener"><i class="fa-solid fa-circle-info"></i> Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5 — Image / Web -->
+        <div class="project-card fade-in-up delay-4" data-category="web">
+          <div class="project-media" data-type="image"
+               data-src="https://placehold.co/600x300/1e1e24/00f0ff?text=Dashboard&font=inter">
+            <img src="https://placehold.co/600x300/1e1e24/00f0ff?text=Dashboard&font=inter" alt="Dashboard" />
+            <div class="media-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            <span class="project-type-badge badge-web">Web</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Analytics Dashboard</h3>
+            <p class="project-desc">Real-time charts with WebSocket live data updates.</p>
+            <div class="project-tags">
+              <span class="tag">React</span><span class="tag">D3.js</span><span class="tag">WebSocket</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn btn-primary" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+              <a href="#" class="btn btn-ghost"   target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 6 — Image / Networking -->
+        <div class="project-card fade-in-up delay-4" data-category="networking">
+          <div class="project-media" data-type="image"
+               data-src="image/visoDesign.jpg">
+            <img src="image/visoDesign.jpg" alt="Visio Network Design" />
+            <div class="media-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            <span class="project-type-badge badge-web" style="background:rgba(0,114,255,.15);color:#7ab8ff;border-color:rgba(0,114,255,.3)">Network</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Network Topology Design</h3>
+            <p class="project-desc">Detailed Visio network topology with routing &amp; switching design.</p>
+            <div class="project-tags">
+              <span class="tag">Visio</span><span class="tag">Topology</span><span class="tag">Cisco</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn btn-primary" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> Case Study</a>
+              <a href="#" class="btn btn-ghost" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Configs</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CONTACT
+       ══════════════════════════════════════════ -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <span class="section-label">Get In Touch</span>
+        <h2 class="section-title">Let's <span>Connect</span></h2>
+        <p class="section-desc">Have a project? Drop me a message.</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Info + socials -->
+        <div class="contact-info fade-in-up">
+          <h3>Let's build something.</h3>
+          <p>Web · Video · Networking — I'm ready to help.</p>
+
+          <!-- REPLACE: your email -->
+          <div class="contact-item glass-card">
+            <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-item-text">
+              <div class="label">Email</div>
+              <div class="value">yekoyeendeshew2721@gmail.com</div>
+            </div>
+          </div>
+
+          <!-- REPLACE: your location -->
+          <div class="contact-item glass-card">
+            <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-item-text">
+              <div class="label">Location</div>
+              <div class="value">Bahir Dar, Ethiopia</div>
+            </div>
+          </div>
+
+          <!-- REPLACE: all social hrefs -->
+          <div class="social-links">
+            <a href="https://github.com"        class="social-link" target="_blank" rel="noopener" title="GitHub">   <i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com"      class="social-link" target="_blank" rel="noopener" title="LinkedIn"> <i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://t.me/@yakoba272116"             class="social-link" target="_blank" rel="noopener" title="Telegram"> <i class="fa-brands fa-telegram"></i></a>
+            <a href="https://youtube.com"       class="social-link" target="_blank" rel="noopener" title="YouTube">  <i class="fa-brands fa-youtube"></i></a>
+            <a href="mailto:yourname@email.com" class="social-link"                                 title="Email">   <i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="contact-form glass-card fade-in-up delay-2">
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="fname">Name</label>
+              <input  class="form-control" type="text"  id="fname"    name="name"    placeholder="Your Name"      required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="femail">Email</label>
+              <input  class="form-control" type="email" id="femail"   name="email"   placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fsubject">Subject</label>
+              <input  class="form-control" type="text"  id="fsubject" name="subject" placeholder="Project Inquiry" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fmessage">Message</label>
+              <textarea class="form-control" id="fmessage" name="message" placeholder="Tell me about your project…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">
+              <i class="fa-solid fa-paper-plane"></i> Send
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <i class="fa-solid fa-circle-check" style="font-size:26px;display:block;margin-bottom:8px;"></i>
+            Sent! I'll reply within 24 hours.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════ -->
+  <footer>
+
+    <!-- ── Main body: name, tagline, socials ── -->
+    <div class="container footer-body">
+
+      <!-- Name with glowing accent on last name -->
+      <h2 class="footer-name">
+        Yekoye <span class="accent">Endeshew</span>
+      </h2>
+
+      <!-- Tagline -->
+      <p class="footer-tagline">
+        Building digital experiences, one line of code at a time.
+      </p>
+
+      <!-- Social icon circles -->
+      <div class="footer-socials">
+
+        <!-- Telegram — REPLACE href with your username -->
+        <a href="https://t.me/@yakoba272116"
+           class="footer-social-link telegram"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Telegram">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
+
+        <!-- Instagram — REPLACE href with your username -->
+        <a href="https://instagram.com/@yakoba2721"
+           class="footer-social-link instagram"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <!-- GitHub — REPLACE href with your username -->
+        <a href="https://github.com/@yakoba2721"
+           class="footer-social-link github"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <!-- Facebook — REPLACE href with your username -->
+        <a href="https://facebook.com/yakobendeshew"
+           class="footer-social-link facebook"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+      </div>
+    </div><!-- /footer-body -->
+
+    <!-- ── Divider line ── -->
+    <div class="footer-divider"></div>
+
+    <!-- ── Copyright bar ── -->
+    <div class="container footer-bottom">
+      <p class="footer-copy">
+        &copy; <span id="year"></span>
+        <span class="highlight">Yekoye Endeshew</span>.
+        All rights reserved.
+      </p>
+      <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fa-solid fa-arrow-up"></i> Top
+      </button>
+    </div>
+
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════
+       LIGHTBOX
+       ══════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="lightbox-media" id="lightboxMedia"></div>
+    </div>
+  </div>
+
+
+  <!--
+    JavaScript files — each file covers one feature:
+    navbar.js      → scroll glass effect, active link, hamburger menu
+    typewriter.js  → hero typing animation
+    animations.js  → scroll-reveal (IntersectionObserver)
+    skills.js      → skill tab switching + bar animation
+    projects.js    → project filter buttons
+    lightbox.js    → image/video modal popup
+    contact.js     → form validation + footer year
+  -->
+  <script src="js/navbar.js"></script>
+  <script src="js/typewriter.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/slider.js"></script>
+
+</body>
+</html>

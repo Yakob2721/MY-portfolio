@@ -1,0 +1,201 @@
+/* =============================================
+   FOOTER
+   ============================================= */
+
+footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-glass);
+  padding: 60px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top glow line */
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-blue), transparent);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
+}
+
+/* --- Main content block (centered column) --- */
+.footer-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 44px;
+  gap: 28px;
+}
+
+/* --- Name --- */
+.footer-name {
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+/* Last name gets cyan gradient glow */
+.footer-name .accent {
+  background: var(--neon-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.45));
+}
+
+/* --- Tagline --- */
+.footer-tagline {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-style: italic;
+  letter-spacing: 0.3px;
+  margin-top: -12px; /* pull up closer to name */
+}
+
+/* --- Social icon circles --- */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.footer-social-link {
+  /* Circle base */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Glass look */
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid var(--border-glass);
+  backdrop-filter: blur(10px);
+
+  font-size: 19px;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Inner shimmer on hover */
+.footer-social-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--neon-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.footer-social-link:hover::before { opacity: 0.15; }
+
+.footer-social-link:hover {
+  color: var(--neon-cyan);
+  border-color: rgba(0, 240, 255, 0.55);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.35), 0 0 32px rgba(0, 114, 255, 0.15);
+  transform: translateY(-4px) scale(1.08);
+}
+
+/* Individual icon brand tints on hover */
+.footer-social-link.telegram:hover  { color: #29b6f6; border-color: rgba(41, 182, 246, 0.5);  box-shadow: 0 0 16px rgba(41, 182, 246, 0.35); }
+.footer-social-link.instagram:hover { color: #e1306c; border-color: rgba(225, 48, 108, 0.5);  box-shadow: 0 0 16px rgba(225, 48, 108, 0.35); }
+.footer-social-link.github:hover    { color: #f0f0f5; border-color: rgba(240, 240, 245, 0.5); box-shadow: 0 0 16px rgba(240, 240, 245, 0.25); }
+.footer-social-link.facebook:hover  { color: #1877f2; border-color: rgba(24, 119, 242, 0.5);  box-shadow: 0 0 16px rgba(24, 119, 242, 0.35); }
+
+/* Icon sits on top of the ::before pseudo */
+.footer-social-link i { position: relative; z-index: 1; }
+
+/* --- Divider line --- */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-glass);
+}
+
+/* --- Copyright bar --- */
+.footer-bottom {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.footer-copy .highlight { color: var(--neon-cyan); }
+
+/* Back to top button */
+.back-to-top {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; background: none;
+  border: 1px solid var(--border-glass);
+  border-radius: 50px; padding: 7px 16px;
+  font-family: var(--font); transition: var(--transition);
+}
+.back-to-top:hover {
+  color: var(--neon-cyan);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: var(--glow-sm);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-socials { gap: 12px; }
+  .footer-social-link { width: 44px; height: 44px; font-size: 17px; }
+}
+
+
+/* =============================================
+   LIGHTBOX / MODAL
+   ============================================= */
+
+.lightbox {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.92); z-index: 2000;
+  align-items: center; justify-content: center;
+  backdrop-filter: blur(12px); padding: 20px;
+}
+.lightbox.open { display: flex; }
+
+.lightbox-inner {
+  position: relative; max-width: 880px; width: 100%;
+  animation: lbIn .3s cubic-bezier(.4,0,.2,1);
+}
+@keyframes lbIn { from { opacity:0; transform:scale(.92); } to { opacity:1; transform:scale(1); } }
+
+.lightbox-close {
+  position: absolute; top: -42px; right: 0;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.08); border: 1px solid var(--border-glass);
+  color: var(--text-primary); font-size: 15px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+.lightbox-close:hover {
+  background: rgba(0,240,255,.1); border-color: var(--neon-cyan); color: var(--neon-cyan);
+}
+.lightbox-media img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--glow-md); }
+.lightbox-media iframe,
+.lightbox-media video {
+  width: 100%; aspect-ratio: 16/9;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-glass); box-shadow: var(--glow-md);
+}
